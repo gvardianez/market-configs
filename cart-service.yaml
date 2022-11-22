@@ -21,8 +21,3 @@ eureka:
 spring:
   application:
     name: cart-service
-management:
-  endpoints:
-    web:
-      exposure:
-        include: *
