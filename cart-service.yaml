@@ -10,7 +10,7 @@ integrations:
     write-timeout: 5000
 redis:
   host: "192.168.99.100"
-  port: 6380
+  port: 6381
 eureka:
   instance:
     hostname: localhost
