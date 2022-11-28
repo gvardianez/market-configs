@@ -42,6 +42,14 @@ spring:
             - StripPrefix=1
             - PrefixPath=/market-auth
             - AuthenticationFilter
+        - id: analytics-service
+            uri: lb://analytics-service
+            predicates:
+              - Path=/analytics/**
+            filters:
+              - StripPrefix=1
+              - PrefixPath=/market-analytics
+              - AuthenticationFilter
 
 eureka:
   instance:
