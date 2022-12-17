@@ -45,7 +45,7 @@ spring:
         - id: auth-service
           uri: lb://auth-service
           predicates:
-            - Path=/auth/{segment}
+            - Path=/auth/{segment}/**
           filters:
             - StripPrefix=1
             - PrefixPath=/market-auth
