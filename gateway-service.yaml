@@ -49,7 +49,6 @@ spring:
           filters:
             - StripPrefix=1
             - PrefixPath=/market-auth
-            - JwtAuthFilter
             - NeedAuthenticationFilter
         - id: analytics-service
           uri: lb://analytics-service
