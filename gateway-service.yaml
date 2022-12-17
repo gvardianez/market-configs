@@ -8,6 +8,15 @@ spring:
     base-url: http://192.168.99.100:9411/
   cloud:
     gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+            allowedHeaders: "*"
       routes:
         - id: core-service
           uri: lb://core-service
