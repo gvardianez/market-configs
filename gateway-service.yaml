@@ -34,23 +34,23 @@ spring:
             - StripPrefix=1
             - PrefixPath=/market-cart
             - JwtAuthFilter
-#        - id: auth-service
-#          uri: lb://auth-service
-#          predicates:
-#            - Path=/auth/**
-#          filters:
-#            - StripPrefix=1
-#            - PrefixPath=/market-auth
-#            - JwtAuthFilter
-        - id: auth-service-account-controller
+        - id: auth-service
           uri: lb://auth-service
           predicates:
-            - Path=/auth/account/**
+            - Path=/auth/**
           filters:
             - StripPrefix=1
             - PrefixPath=/market-auth
             - JwtAuthFilter
-            - NeedAuthenticationFilter
+#        - id: auth-service-account-controller
+#          uri: lb://auth-service
+#          predicates:
+#            - Path=/auth/account/**
+#          filters:
+#            - StripPrefix=1
+#            - PrefixPath=/market-auth
+#            - JwtAuthFilter
+#            - NeedAuthenticationFilter
         - id: analytics-service
           uri: lb://analytics-service
           predicates:
