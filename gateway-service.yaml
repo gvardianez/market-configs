@@ -42,6 +42,14 @@ spring:
             - StripPrefix=1
             - PrefixPath=/market-auth
             - JwtAuthFilter
+        - id: auth-service-account
+          uri: lb://auth-service
+          predicates:
+            - Path=/auth/account/**
+          filters:
+            - StripPrefix=1
+            - PrefixPath=/market-auth
+            - JwtAuthFilter
             - NeedAuthenticationFilter
         - id: analytics-service
           uri: lb://analytics-service
