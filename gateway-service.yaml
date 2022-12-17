@@ -45,8 +45,9 @@ spring:
         - id: auth-service
           uri: lb://auth-service
           predicates:
-            - Path=/auth/account/
+            - Path=/auth/{segment}
           filters:
+            - SetPath=/account
             - StripPrefix=1
             - PrefixPath=/market-auth
             - JwtAuthFilter
