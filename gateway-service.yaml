@@ -25,7 +25,7 @@ spring:
           filters:
             - StripPrefix=1
             - PrefixPath=/market-core
-            - AuthenticationFilter
+            - JwtAuthFiltet
         - id: cart-service
           uri: lb://cart-service
           predicates:
@@ -33,7 +33,7 @@ spring:
           filters:
             - StripPrefix=1
             - PrefixPath=/market-cart
-            - AuthenticationFilter
+            - JwtAuthFiltet
         - id: auth-service
           uri: lb://auth-service
           predicates:
@@ -41,7 +41,7 @@ spring:
           filters:
             - StripPrefix=1
             - PrefixPath=/market-auth
-            - AuthenticationFilter
+            - JwtAuthFiltet
         - id: analytics-service
           uri: lb://analytics-service
           predicates:
@@ -49,7 +49,7 @@ spring:
           filters:
             - StripPrefix=1
             - PrefixPath=/market-analytics
-            - AuthenticationFilter
+            - JwtAuthFiltet
 
 eureka:
   instance:
