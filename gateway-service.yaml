@@ -21,7 +21,7 @@ spring:
         - id: core-service
           uri: lb://core-service
           predicates:
-            - Path=/core/{segment}/{segment}/orders/{segment}
+            - Path=/core/{segment}/orders/{segment}
           filters:
             - StripPrefix=1
             - PrefixPath=/market-core
@@ -30,7 +30,7 @@ spring:
         - id: core-service
           uri: lb://core-service
           predicates:
-            - Path=/core/{segment}/{segment}/orders/**
+            - Path=/core/{segment}/orders/**
           filters:
             - StripPrefix=1
             - PrefixPath=/market-core
@@ -55,7 +55,7 @@ spring:
         - id: auth-service-account-subscribers
           uri: lb://auth-service
           predicates:
-            - Path=/auth/{segment}/{segment}/account/subscribers
+            - Path=/auth/{segment}/account/subscribers
           filters:
             - StripPrefix=1
             - PrefixPath=/market-auth
@@ -64,7 +64,7 @@ spring:
         - id: auth-service-account
           uri: lb://auth-service
           predicates:
-            - Path=/auth/{segment}/{segment}/account/**
+            - Path=/auth/{segment}/account/**
           filters:
             - StripPrefix=1
             - PrefixPath=/market-auth
@@ -73,7 +73,7 @@ spring:
         - id: auth-service-account
           uri: lb://auth-service
           predicates:
-            - Path=/auth/{segment}/{segment}/registration/confirm-email
+            - Path=/auth/{segment}/registration/confirm-email
           filters:
             - StripPrefix=1
             - PrefixPath=/market-auth
