@@ -16,9 +16,10 @@ spring:
               - GET
               - POST
               - PUT
+              - DELETE
             allowedHeaders: "*"
       routes:
-        - id: core-service
+        - id: core-service-get-anything-order
           uri: lb://core-service
           predicates:
             - Path=/core/api/v1/orders/{segment}
@@ -27,7 +28,7 @@ spring:
             - PrefixPath=/market-core
             - JwtAuthFilter
             - NeedAdminRoleFilter
-        - id: core-service
+        - id: core-service-orders-another
           uri: lb://core-service
           predicates:
             - Path=/core/api/v1/orders/**
@@ -36,8 +37,27 @@ spring:
             - PrefixPath=/market-core
             - JwtAuthFilter
             - NeedAuthenticationFilter
-        - id: core-service
+        - id: core-service-paypal
           uri: lb://core-service
+          predicates:
+            - Path=/core/api/v1/paypal/**
+          filters:
+            - StripPrefix=1
+            - PrefixPath=/market-core
+            - JwtAuthFilter
+            - NeedAuthenticationFilter
+        - id: core-service-products
+          uri: lb://core-service
+          predicates:
+            - Path=/core/api/v1/products/**
+            - Method=DELETE,POST
+          filters:
+            - StripPrefix=1
+            - PrefixPath=/market-core
+            - JwtAuthFilter
+            - NeedAdminRoleFilter
+        - id: core-service
+          uri: lb://core-service-another
           predicates:
             - Path=/core/**
           filters:
@@ -79,13 +99,21 @@ spring:
             - PrefixPath=/market-auth
             - JwtAuthFilter
             - NeedAuthenticationFilter
-        - id: auth-service
+        - id: auth-service-another
           uri: lb://auth-service
           predicates:
             - Path=/auth/**
           filters:
             - StripPrefix=1
             - PrefixPath=/market-auth
+            - JwtAuthFilter
+        - id: analytics-service-yesterday
+          uri: lb://analytics-service
+          predicates:
+             - Path=/analytics/api/v1/analytical/product-quantity-rating-yesterday
+          filters:
+            - StripPrefix=1
+            - PrefixPath=/market-analytics
             - JwtAuthFilter
         - id: analytics-service
           uri: lb://analytics-service
@@ -95,6 +123,25 @@ spring:
             - StripPrefix=1
             - PrefixPath=/market-analytics
             - JwtAuthFilter
+            - NeedAdminRoleFilter
+        - id: promotion-service
+          uri: lb://promotion-service
+          predicates:
+            - Path=/promotion/**
+          filters:
+            - StripPrefix=1
+            - PrefixPath=/market-promotion
+            - JwtAuthFilter
+            - NeedAdminRoleFilter
+        - id: messaging-service
+          uri: lb://messaging-service
+          predicates:
+            - Path=/messaging/**
+          filters:
+            - StripPrefix=1
+            - PrefixPath=/market-messaging
+            - JwtAuthFilter
+            - NeedAdminRoleFilter
 
 eureka:
   instance:
