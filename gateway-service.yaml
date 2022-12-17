@@ -47,7 +47,6 @@ spring:
           predicates:
             - Path=/auth/{segment}
           filters:
-            - SetPath=/account
             - StripPrefix=1
             - PrefixPath=/market-auth
             - JwtAuthFilter
