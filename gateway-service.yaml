@@ -21,7 +21,7 @@ spring:
         - id: core-service
           uri: lb://core-service
           predicates:
-            - Path=/core/{segment}/orders/{segment}
+            - Path=/core/{segment}/orders/
           filters:
             - StripPrefix=1
             - PrefixPath=/market-core
