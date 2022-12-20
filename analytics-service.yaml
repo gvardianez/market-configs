@@ -22,6 +22,8 @@ spring:
     consumer:
       auto-offset-reset: earliest
       group-id: "analytical.broker"
+  zipkin:
+    base-url: http://192.168.99.100:9411/
 integrations:
   core-service:
     url: http://core-service/market-core
