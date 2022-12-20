@@ -10,6 +10,8 @@ spring:
       group-id: "email.broker"
   application:
     name: messaging-service
+  zipkin:
+    base-url: http://192.168.99.100:9411/
 mail:
   host: "smtp.gmail.com"
   port: 587
