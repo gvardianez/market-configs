@@ -18,33 +18,33 @@ spring:
               - DELETE
             allowedHeaders: "*"
       routes:
-#        - id: core-service-get-anything-order
-#          uri: lb://core-service
-#          predicates:
-#            - Path=/core/api/v1/orders/{segment}
-#          filters:
-#            - StripPrefix=1
-#            - PrefixPath=/market-core
-#            - JwtAuthFilter
-#            - NeedAdminRoleFilter
-#        - id: core-service-orders-another
-#          uri: lb://core-service
-#          predicates:
-#            - Path=/core/api/v1/orders/**
-#          filters:
-#            - StripPrefix=1
-#            - PrefixPath=/market-core
-#            - JwtAuthFilter
-#            - NeedAuthenticationFilter
-#        - id: core-service-paypal
-#          uri: lb://core-service
-#          predicates:
-#            - Path=/core/api/v1/paypal/**
-#          filters:
-#            - StripPrefix=1
-#            - PrefixPath=/market-core
-#            - JwtAuthFilter
-#            - NeedAuthenticationFilter
+        - id: core-service-get-anything-order
+          uri: lb://core-service
+          predicates:
+            - Path=/core/api/v1/orders/{segment}
+          filters:
+            - StripPrefix=1
+            - PrefixPath=/market-core
+            - JwtAuthFilter
+            - NeedAdminRoleFilter
+        - id: core-service-orders-another
+          uri: lb://core-service
+          predicates:
+            - Path=/core/api/v1/orders/**
+          filters:
+            - StripPrefix=1
+            - PrefixPath=/market-core
+            - JwtAuthFilter
+            - NeedAuthenticationFilter
+        - id: core-service-paypal
+          uri: lb://core-service
+          predicates:
+            - Path=/core/api/v1/paypal/**
+          filters:
+            - StripPrefix=1
+            - PrefixPath=/market-core
+            - JwtAuthFilter
+            - NeedAuthenticationFilter
         - id: core-service-products
           uri: lb://core-service
           predicates:
