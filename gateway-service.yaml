@@ -27,15 +27,15 @@ spring:
 #            - PrefixPath=/market-core
 #            - JwtAuthFilter
 #            - NeedAdminRoleFilter
-        - id: core-service-orders-another
-          uri: lb://core-service
-          predicates:
-            - Path=/core/api/v1/orders/**
-          filters:
-            - StripPrefix=1
-            - PrefixPath=/market-core
-            - JwtAuthFilter
-            - NeedAuthenticationFilter
+#        - id: core-service-orders-another
+#          uri: lb://core-service
+#          predicates:
+#            - Path=/core/api/v1/orders/**
+#          filters:
+#            - StripPrefix=1
+#            - PrefixPath=/market-core
+#            - JwtAuthFilter
+#            - NeedAuthenticationFilter
         - id: core-service-paypal
           uri: lb://core-service
           predicates:
