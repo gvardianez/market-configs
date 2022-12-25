@@ -1,6 +1,5 @@
 server:
   port: 5555
-
 spring:
   application:
     name: gateway-service
@@ -19,15 +18,15 @@ spring:
               - DELETE
             allowedHeaders: "*"
       routes:
-        - id: core-service-get-anything-order
-          uri: lb://core-service
-          predicates:
-            - Path=/core/api/v1/orders/{segment}
-          filters:
-            - StripPrefix=1
-            - PrefixPath=/market-core
-            - JwtAuthFilter
-            - NeedAdminRoleFilter
+#        - id: core-service-get-anything-order
+#          uri: lb://core-service
+#          predicates:
+#            - Path=/core/api/v1/orders/{segment}
+#          filters:
+#            - StripPrefix=1
+#            - PrefixPath=/market-core
+#            - JwtAuthFilter
+#            - NeedAdminRoleFilter
         - id: core-service-orders-another
           uri: lb://core-service
           predicates:
